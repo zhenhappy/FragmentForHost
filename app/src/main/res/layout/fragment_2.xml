@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="#ffffff"
-              android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="horizontal">
 
     <!-- 左边 -->
     <LinearLayout
@@ -32,7 +32,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="手动"
-                    android:textColor="#2960dc"/>
+                    android:textColor="#2960dc" />
             </LinearLayout>
 
             <!-- 自动 -->
@@ -49,7 +49,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="自动"
-                    android:textColor="#898989"/>
+                    android:textColor="#898989" />
             </LinearLayout>
 
             <!-- 设置 -->
@@ -66,7 +66,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="设置"
-                    android:textColor="#898989"/>
+                    android:textColor="#898989" />
             </LinearLayout>
         </LinearLayout>
 
@@ -80,27 +80,27 @@
                 android:layout_width="0dp"
                 android:layout_height="1dip"
                 android:layout_weight="1"
-                android:background="#2960dc"/>
+                android:background="#2960dc" />
 
             <View
                 android:id="@+id/zidong_selected"
                 android:layout_width="0dp"
                 android:layout_height="1dip"
                 android:layout_weight="1"
-                android:background="#ffffff"/>
+                android:background="#ffffff" />
 
             <View
                 android:id="@+id/sezi_selected"
                 android:layout_width="0dp"
                 android:layout_height="1dip"
                 android:layout_weight="1"
-                android:background="#ffffff"/>
+                android:background="#ffffff" />
         </LinearLayout>
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dip"
-            android:background="#d2d2d2"/>
+            android:background="#d2d2d2" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -128,7 +128,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="排污处理"
-                        android:textSize="15.94px"/>
+                        android:textSize="15.94px" />
                 </LinearLayout>
 
                 <!-- 大便处理-小便处理 -->
@@ -143,14 +143,14 @@
                         android:id="@+id/btn_daxiaobian_dabianculi"
                         android:layout_width="185px"
                         android:layout_height="51px"
-                        android:background="@drawable/btn_daxiaobian_dabianculi"/>
+                        android:background="@drawable/btn_daxiaobian_dabianculi" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_xiaobianculi"
                         android:layout_width="185px"
                         android:layout_height="51px"
                         android:layout_marginLeft="19px"
-                        android:background="@drawable/btn_daxiaobian_xiaobianculi"/>
+                        android:background="@drawable/btn_daxiaobian_xiaobianculi" />
                 </LinearLayout>
 
                 <!-- 清洁处理 -->
@@ -165,7 +165,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="清洁处理"
-                        android:textSize="15.94px"/>
+                        android:textSize="15.94px" />
                 </LinearLayout>
 
                 <!-- 清洗臀部-烘干臀部 -->
@@ -180,14 +180,14 @@
                         android:id="@+id/btn_daxiaobian_qingxitunbu"
                         android:layout_width="185px"
                         android:layout_height="51px"
-                        android:background="@drawable/btn_daxiaobian_qingxitunbu"/>
+                        android:background="@drawable/btn_daxiaobian_qingxitunbu" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_honggantunbu"
                         android:layout_width="185px"
                         android:layout_height="51px"
                         android:layout_marginLeft="19px"
-                        android:background="@drawable/btn_daxiaobian_honggantunbu"/>
+                        android:background="@drawable/btn_daxiaobian_honggantunbu" />
                 </LinearLayout>
 
                 <!-- 冲洗便垫-消毒杀菌 -->
@@ -202,14 +202,14 @@
                         android:id="@+id/btn_daxiaobian_congxibiandian"
                         android:layout_width="185px"
                         android:layout_height="51px"
-                        android:background="@drawable/btn_daxiaobian_congxibiandian"/>
+                        android:background="@drawable/btn_daxiaobian_congxibiandian" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_xiaodusajun"
                         android:layout_width="185px"
                         android:layout_height="51px"
                         android:layout_marginLeft="19px"
-                        android:background="@drawable/btn_daxiaobian_xiaodusajun"/>
+                        android:background="@drawable/btn_daxiaobian_xiaodusajun" />
                 </LinearLayout>
 
                 <!-- 排水 -->
@@ -224,7 +224,7 @@
                         android:id="@+id/btn_daxiaobian_paisui"
                         android:layout_width="185px"
                         android:layout_height="51px"
-                        android:background="@drawable/btn_daxiaobian_paisui"/>
+                        android:background="@drawable/btn_daxiaobian_paisui" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -252,14 +252,14 @@
                         android:gravity="left"
                         android:text="自动处理大小便"
                         android:textColor="#000000"
-                        android:textSize="19.93px"/>
+                        android:textSize="19.93px" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_zidongculidaxiaobian"
                         android:layout_width="69px"
                         android:layout_height="34px"
                         android:layout_marginLeft="180px"
-                        android:background="@drawable/btn_off"/>
+                        android:background="@drawable/btn_off" />
 
                 </LinearLayout>
 
@@ -267,7 +267,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
                     android:layout_marginTop="20px"
-                    android:background="#d2d2d2"/>
+                    android:background="#d2d2d2" />
 
                 <!-- 自动换气除臭 -->
                 <LinearLayout
@@ -284,14 +284,14 @@
                         android:gravity="left"
                         android:text="自动换气除臭"
                         android:textColor="#000000"
-                        android:textSize="19.93px"/>
+                        android:textSize="19.93px" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_zidonghuanqicucou"
                         android:layout_width="69px"
                         android:layout_height="34px"
                         android:layout_marginLeft="200px"
-                        android:background="@drawable/btn_off"/>
+                        android:background="@drawable/btn_off" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -317,14 +317,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="用户设置"
-                        android:textSize="15.94px"/>
+                        android:textSize="15.94px" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
                     android:layout_marginTop="20px"
-                    android:background="#d2d2d2"/>
+                    android:background="#d2d2d2" />
 
                 <!-- 尿失禁模式 -->
                 <LinearLayout
@@ -341,14 +341,14 @@
                         android:gravity="left"
                         android:text="尿失禁模式"
                         android:textColor="#000000"
-                        android:textSize="19.93px"/>
+                        android:textSize="19.93px" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_niaosijinmosi"
                         android:layout_width="69px"
                         android:layout_height="34px"
                         android:layout_marginLeft="220px"
-                        android:background="@drawable/btn_off"/>
+                        android:background="@drawable/btn_off" />
 
                 </LinearLayout>
 
@@ -367,14 +367,14 @@
                         android:gravity="left"
                         android:text="女性模式"
                         android:textColor="#000000"
-                        android:textSize="19.93px"/>
+                        android:textSize="19.93px" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_nvxingmosi"
                         android:layout_width="69px"
                         android:layout_height="34px"
                         android:layout_marginLeft="240px"
-                        android:background="@drawable/btn_off"/>
+                        android:background="@drawable/btn_off" />
 
                 </LinearLayout>
 
@@ -390,14 +390,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="机器设置"
-                        android:textSize="15.94px"/>
+                        android:textSize="15.94px" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dip"
                     android:layout_marginTop="20px"
-                    android:background="#d2d2d2"/>
+                    android:background="#d2d2d2" />
 
                 <!-- 污水桶锁定 -->
                 <LinearLayout
@@ -414,14 +414,14 @@
                         android:gravity="left"
                         android:text="污水桶锁定"
                         android:textColor="#000000"
-                        android:textSize="19.93px"/>
+                        android:textSize="19.93px" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_wusuitongsuiding"
                         android:layout_width="69px"
                         android:layout_height="34px"
                         android:layout_marginLeft="220px"
-                        android:background="@drawable/btn_off"/>
+                        android:background="@drawable/btn_off" />
 
                 </LinearLayout>
 
@@ -440,14 +440,14 @@
                         android:gravity="left"
                         android:text="排水开关"
                         android:textColor="#000000"
-                        android:textSize="19.93px"/>
+                        android:textSize="19.93px" />
 
                     <Button
                         android:id="@+id/btn_daxiaobian_paisuikaiguan"
                         android:layout_width="69px"
                         android:layout_height="34px"
                         android:layout_marginLeft="240px"
-                        android:background="@drawable/btn_off"/>
+                        android:background="@drawable/btn_off" />
 
                 </LinearLayout>
 
@@ -462,7 +462,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="只在**情况下可打开"
-                        android:textSize="15.94px"/>
+                        android:textSize="15.94px" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -471,7 +471,7 @@
     <View
         android:layout_width="1dip"
         android:layout_height="fill_parent"
-        android:background="#d2d2d2"/>
+        android:background="#d2d2d2" />
 
     <!-- 右边 -->
     <LinearLayout
@@ -501,49 +501,49 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10px"
-                    android:src="@drawable/img_daxiaobian_suiwen_normal"/>
+                    android:src="@drawable/img_daxiaobian_suiwen_normal" />
 
                 <ImageView
                     android:id="@+id/img_daxiaobian_guandao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10px"
-                    android:src="@drawable/img_daxiaobian_guandao_normal"/>
+                    android:src="@drawable/img_daxiaobian_guandao_normal" />
 
                 <ImageView
                     android:id="@+id/img_daxiaobian_biandian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10px"
-                    android:src="@drawable/img_daxiaobian_biandian_normal"/>
+                    android:src="@drawable/img_daxiaobian_biandian_normal" />
 
                 <ImageView
                     android:id="@+id/img_daxiaobian_dianjiwendu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10px"
-                    android:src="@drawable/img_daxiaobian_dianjiwendu_normal"/>
+                    android:src="@drawable/img_daxiaobian_dianjiwendu_normal" />
 
                 <ImageView
                     android:id="@+id/img_daxiaobian_qingsuitong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10px"
-                    android:src="@drawable/img_daxiaobian_qingsuitong_normal"/>
+                    android:src="@drawable/img_daxiaobian_qingsuitong_normal" />
 
                 <ImageView
                     android:id="@+id/img_daxiaobian_yaosuitong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10px"
-                    android:src="@drawable/img_daxiaobian_yaosuitong_normal"/>
+                    android:src="@drawable/img_daxiaobian_yaosuitong_normal" />
 
                 <ImageView
                     android:id="@+id/img_daxiaobian_wusuitong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10px"
-                    android:src="@drawable/img_daxiaobian_wusuitong_normal"/>
+                    android:src="@drawable/img_daxiaobian_wusuitong_normal" />
             </LinearLayout>
 
         </LinearLayout>
@@ -565,7 +565,7 @@
                 android:gravity="center_vertical"
                 android:text="历史记录"
                 android:textColor="#707070"
-                android:textSize="17.93px"/>
+                android:textSize="17.93px" />
         </LinearLayout>
 
         <LinearLayout
@@ -579,7 +579,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dip"
-                android:background="#d2d2d2"/>
+                android:background="#d2d2d2" />
         </LinearLayout>
 
         <LinearLayout
@@ -593,7 +593,7 @@
             <View
                 android:layout_width="2dip"
                 android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
+                android:background="#d2d2d2" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -601,12 +601,12 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="今天       大便次数:2      小便次数:4                            "
-                android:textSize="17.93px"/>
+                android:textSize="17.93px" />
 
             <View
                 android:layout_width="2dip"
                 android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
+                android:background="#d2d2d2" />
         </LinearLayout>
 
         <LinearLayout
@@ -619,7 +619,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dip"
-                android:background="#d2d2d2"/>
+                android:background="#d2d2d2" />
         </LinearLayout>
 
         <LinearLayout
@@ -633,7 +633,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dip"
-                android:background="#d2d2d2"/>
+                android:background="#d2d2d2" />
         </LinearLayout>
 
         <LinearLayout
@@ -647,7 +647,7 @@
             <View
                 android:layout_width="2dip"
                 android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
+                android:background="#d2d2d2" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -655,12 +655,12 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="操作                操作者                时间                属性1                属性2                属性3"
-                android:textSize="17.93px"/>
+                android:textSize="17.93px" />
 
             <View
                 android:layout_width="2dip"
                 android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
+                android:background="#d2d2d2" />
         </LinearLayout>
 
         <LinearLayout
@@ -673,182 +673,16 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dip"
-                android:background="#d2d2d2"/>
+                android:background="#d2d2d2" />
         </LinearLayout>
 
-        <LinearLayout
+        <ListView
+            android:id="@+id/lv_fgm2"
             android:layout_width="match_parent"
-            android:layout_height="39px"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="44px"
-            android:layout_marginRight="41px"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_marginRight="41px">
 
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="大便处理          电脑         10月29号 15:12      自动                                                          "
-                android:textSize="17.93px"/>
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="39px"
-            android:layout_marginLeft="44px"
-            android:layout_marginRight="41px"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="烘干便垫          人工         10月29号 15:12                                                                         "
-                android:textSize="17.93px"/>
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="39px"
-            android:layout_marginLeft="44px"
-            android:layout_marginRight="41px"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="清洗臀部          人工         10月29号 15:12                                                                         "
-                android:textSize="17.93px"/>
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="39px"
-            android:layout_marginLeft="44px"
-            android:layout_marginRight="41px"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="大便处理          电脑         10月29号 15:12      自动                                                          "
-                android:textSize="17.93px"/>
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="39px"
-            android:layout_marginLeft="44px"
-            android:layout_marginRight="41px"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="小便处理          人工         10月29号 15:12      自动                                                          "
-                android:textSize="17.93px"/>
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="39px"
-            android:layout_marginLeft="44px"
-            android:layout_marginRight="41px"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="换气除臭          电脑         10月29号 15:12      自动                                                          "
-                android:textSize="17.93px"/>
-
-            <View
-                android:layout_width="2dip"
-                android:layout_height="fill_parent"
-                android:background="#d2d2d2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="44px"
-            android:layout_marginRight="41px"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dip"
-                android:background="#d2d2d2"/>
-        </LinearLayout>
+        </ListView>
     </LinearLayout>
 </LinearLayout>
