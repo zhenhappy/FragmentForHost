@@ -30,6 +30,9 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.ViewsById;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @EFragment(R.layout.fragment_1)
@@ -119,11 +122,7 @@ public class Fragment1 extends Fragment {
         this.activity = activity;
         sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
 //        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
-        mDB = new DBUtils(activity);
-        String[] type = new String[]{"1"};
-        mCursor = mDB.select(type);
-        lv_fgm1.setAdapter(new CtListAdapter(activity, mCursor));
-
+        initViews();
         bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[0]);
     }
 
@@ -474,14 +473,25 @@ public class Fragment1 extends Fragment {
         tv_cuangti_cisu.setText("今天          起背次数:" + qibeicisu + "          弯腿次数:" + wantuicisu + "          翻身次数:" + fansencisu);
     }
 
+    @UiThread
+    void initViews() {
+        mDB = new DBUtils(activity);
+        String[] type = new String[]{"1"};
+        mCursor = mDB.select(type);
+        lv_fgm1.setAdapter(new CtListAdapter(activity, mCursor));
+    }
 
-    public void addData() {
-        String type = "",operation = "",operator = "",time = "";
+    @UiThread
+    public void addData(String type,String operation,String operator) {
+        Date date=new Date();
+        DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time=format.format(date);
         mDB.insert(type, operation, operator, time);
         mCursor.requery();
         lv_fgm1.invalidateViews();
 
     }
+
     public class CtListAdapter extends BaseAdapter {
         private Context mContext;
         private Cursor mCursor;

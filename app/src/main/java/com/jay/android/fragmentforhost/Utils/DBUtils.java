@@ -25,7 +25,7 @@ public class DBUtils extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		String sql = "CREATE TABLE " + TABLE_NAME + " (" + RECORD_ID
-				+ " INTEGER primary key autoincrement, , " + TYPE + " text" + OPERATION
+				+ " INTEGER primary key autoincrement,  " + TYPE + " text, " + OPERATION
 				+ " text, " + OPERATOR + " text, " + TIME + " text);";
 		db.execSQL(sql);
 	}
@@ -52,7 +52,7 @@ public class DBUtils extends SQLiteOpenHelper {
 		cv.put(TYPE, type);
 		cv.put(OPERATION, operation);
 		cv.put(OPERATOR, operator);
-		cv.put(OPERATOR, time);
+		cv.put(TIME, time);
 		long row = db.insert(TABLE_NAME, null, cv);
 		return row;
 	}
