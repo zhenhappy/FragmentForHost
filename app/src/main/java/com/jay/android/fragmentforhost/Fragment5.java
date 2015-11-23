@@ -5,10 +5,14 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.content.SharedPreferences;
 import android.widget.TextView;
+
+import com.jay.android.fragmentforhost.Utils.UIUtils;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
@@ -21,6 +25,8 @@ public class Fragment5 extends Fragment {
     private String strName, strAge, strSex, strUro, strMac1, strMac2;
     private Activity activity;
     private Dialog nameDialog, ageDialog, sexDialog, uroclepsiaDialog, macDialog, clearDialog;
+    @ViewById
+    CheckBox ckb_suoping;
     @ViewById
     RelativeLayout rly_clear;
     @ViewById
@@ -54,13 +60,7 @@ public class Fragment5 extends Fragment {
         super.onAttach(activity);
         this.activity = activity;
         iniViews();
-//        sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
-//        tv_name.setText(sp.getString("name", null));
-//        tv_age.setText(sp.getString("age", null));
-//        tv_sex.setText(sp.getString("sex", null));
-//        tv_uro.setText(sp.getString("uro", null));
-//        tv_mac1.setText(sp.getString("mac1", null));
-//        tv_mac2.setText(sp.getString("mac2", null));
+
     }
 
     @UiThread
@@ -72,7 +72,29 @@ public class Fragment5 extends Fragment {
         tv_uro.setText(sp.getString("uro", null));
         tv_mac1.setText(sp.getString("mac1", null));
         tv_mac2.setText(sp.getString("mac2", null));
+        if (sp.getString("isSuoping", "false").equals("true")){
+            ckb_suoping.setChecked(true);
+        }
+        ckb_suoping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE).edit()
+                            .putString("isSuoping", "true").commit();
+                    UIUtils.showToastSafe("11 ");
+                }else {
+                    getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE).edit()
+                            .putString("isSuoping", "false").commit();
+                    UIUtils.showToastSafe("222");
+                }
+            }
+        });
     }
+
+//    @Click(R.id.rbt_suoping)
+//    void screenSaver() {
+//
+//    }
 
     @Click(R.id.rly_clear)
     void clearData() {

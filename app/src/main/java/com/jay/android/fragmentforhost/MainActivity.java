@@ -81,8 +81,13 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[0]);
-//        sp = this.getSharedPreferences("setting", Context.MODE_PRIVATE);
+        sp = this.getSharedPreferences("setting", Context.MODE_PRIVATE);
 //        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
+        if (sp.getString("isSuoping", "false").equals("true")){
+            Intent mService = new Intent(MainActivity.this, ScreenService.class);
+            mService.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startService(mService);
+        }
     }
 
     @Override
