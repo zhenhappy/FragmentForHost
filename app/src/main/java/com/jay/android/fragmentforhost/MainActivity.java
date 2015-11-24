@@ -182,6 +182,8 @@ public class MainActivity extends BaseActivity {
                 stop_image.setImageResource(R.drawable.tab_8_stop);
             }
             stopFlag[1] = !stopFlag[1];
+        }else if (currentFg == 3){
+            bleHelp.sendDatas(DataHelp.XIAZIKANGFU_JITING_STR, DataHelp.XIAZIKANGFU_JITING);
         }
     }
 

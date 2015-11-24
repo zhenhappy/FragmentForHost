@@ -34,6 +34,7 @@ public class Fragment4 extends Fragment {
     private SharedPreferences sp;
     private byte[] sendbytes = null;
     private Activity activity;
+    private Boolean isGo = true;
     private static Map param = new HashMap() {{
         put("duanliansicang", new HashMap(){{
             put("value",10);
@@ -124,7 +125,11 @@ public class Fragment4 extends Fragment {
                 break;
             case R.id.btn_xiazikangfu_kaisiduanlian:
                 if(buttonFlag[1]) {
-                    bleHelp.sendDatas(DataHelp.XIAZIKANGFU_DUANLIAN_START_STR, DataHelp.XIAZIKANGFU_DUANLIAN_START);
+                    if (isGo){
+                        bleHelp.sendDatas(DataHelp.XIAZIKANGFU_DUANLIAN_START_STR, DataHelp.XIAZIKANGFU_DUANLIAN_START);
+                    }else {
+                        bleHelp.sendDatas(DataHelp.XIAZIKANGFU_DUANLIAN_PAUSE_STR, DataHelp.XIAZIKANGFU_DUANLIAN_PAUSE);
+                    }
                 }
                 break;
         }
@@ -357,9 +362,15 @@ public class Fragment4 extends Fragment {
         }else if(datas[1] == (byte)0x13 && datas[3] == (byte)0x02){
             btn_xiazikangfu_jiqizunbei.setBackgroundResource(R.drawable.btn_jiqizunbei_disable);
             buttonFlag[0] = false;
+            btn_xiazikangfu_kaisiduanlian.setBackgroundResource(R.drawable.btn_kaisiduanlian_press);
+            buttonFlag[1] = true;
+            isGo = false;
         }else if(datas[1] == (byte)0x13 && datas[3] == (byte)0x04){
             btn_xiazikangfu_jiqizunbei.setBackgroundResource(R.drawable.btn_jiqizunbei_disable);
             buttonFlag[0] = false;
+            btn_xiazikangfu_kaisiduanlian.setBackgroundResource(R.drawable.btn_kaisiduanlian_normal);
+            buttonFlag[1] = true;
+            isGo = true;
         }
     }
 

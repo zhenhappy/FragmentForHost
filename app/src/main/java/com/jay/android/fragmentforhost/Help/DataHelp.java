@@ -202,6 +202,9 @@ public class DataHelp {
     public final static byte[] DAXIAOBIAN_NVXING_SUCCESS = new byte[]{(byte) 0xB2, (byte) 0x4E, (byte) 0x32, (byte) 0x01, (byte) 0xFF, (byte) 0xEB, (byte) 0x2D};                   //女性设置成功
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // 急停
+    public final static String XIAZIKANGFU_JITING_STR = "急停";
+    public final static byte[] XIAZIKANGFU_JITING = new byte[]{(byte) 0xb1, (byte) 0x1d, (byte) 0x08, (byte) 0x01, (byte) 0x01, (byte) 0x1b, (byte) 0xe5, (byte) 0xc3, (byte) 0x0d, (byte) 0x0a};    //机器准备
 
     // 机器准备
     public final static String XIAZIKANGFU_JIQIZUNBEI_STR = "机器准备";

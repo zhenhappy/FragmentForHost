@@ -482,10 +482,10 @@ public class Fragment1 extends Fragment {
     }
 
     @UiThread
-    public void addData(String type,String operation,String operator) {
-        Date date=new Date();
-        DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time=format.format(date);
+    public void addData(String type, String operation, String operator) {
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = format.format(date);
         mDB.insert(type, operation, operator, time);
         mCursor.requery();
         lv_fgm1.invalidateViews();
@@ -504,7 +504,10 @@ public class Fragment1 extends Fragment {
 
         @Override
         public int getCount() {
-            return mCursor.getCount();
+            if (mCursor.getCount() <= 5)
+                return mCursor.getCount();
+            else
+                return 5;
         }
 
         @Override
