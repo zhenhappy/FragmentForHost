@@ -122,8 +122,8 @@ public class Fragment1 extends Fragment {
         this.activity = activity;
         sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
 //        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
-        initViews();
         bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[0]);
+        initViews();
     }
 
     public void setChioceItem(int index) {
@@ -389,8 +389,17 @@ public class Fragment1 extends Fragment {
                 break;
             case (byte) 0x08:
                 str_2 = "完成";
-                if (datas[1] == 7) btn_id = -2;
-                else btn_id = -1;
+                if (datas[1] == 7) {
+                    btn_id = -2;
+                    addData("1",str_1,"电脑");
+                }
+                else {
+                    btn_id = -1;
+                    if (datas[1] <7){
+                        addData("1",str_1,"手动");
+                    }
+
+                }
                 break;
         }
         syncButton(btn_id);
@@ -524,7 +533,7 @@ public class Fragment1 extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             TextView mTextView = new TextView(mContext);
             mCursor.moveToPosition(position);
-            mTextView.setText(mCursor.getString(1) + "    " + mCursor.getString(2));
+            mTextView.setText(mCursor.getString(2) + "                        " + mCursor.getString(3) + "                        " + mCursor.getString(4));
             return mTextView;
         }
 

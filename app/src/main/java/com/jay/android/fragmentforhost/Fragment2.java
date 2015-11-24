@@ -5,15 +5,20 @@ import android.app.Fragment;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jay.android.fragmentforhost.Help.BLEHelp;
 import com.jay.android.fragmentforhost.Help.DataHelp;
+import com.jay.android.fragmentforhost.Utils.DBUtils;
 import com.jay.android.fragmentforhost.Utils.SharedPreferencesUtils;
 import com.jay.android.fragmentforhost.Utils.UIUtils;
 import com.mt.ble.mtble.MTBLEMBLE;
@@ -26,6 +31,9 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.ViewsById;
 import org.androidannotations.api.BackgroundExecutor;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +41,13 @@ import java.util.Map;
 @EFragment(R.layout.fragment_2)
 public class Fragment2 extends Fragment {
     private SharedPreferences sp;
+    private DBUtils mDB;
+    private Cursor mCursor;
     private byte[] sendbytes = null;
     private Activity activity;
+
+    @ViewById
+    ListView lv_fgm2;
 
     @ViewById
     LinearLayout ll_daxiaobian_soudong;
@@ -141,6 +154,7 @@ public class Fragment2 extends Fragment {
         sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
 //        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac2", null));
         bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[1]);
+        initViews();
     }
 
     BLEHelp bleHelp = null;
@@ -500,6 +514,7 @@ public class Fragment2 extends Fragment {
             case (byte)0xff:
                 str_2 = "执行完成";
                 flag = true;
+                addData("2",str_1,"手动");
                 break;
         }
         syncButton(btn_id);
@@ -591,6 +606,61 @@ public class Fragment2 extends Fragment {
             // TODO: handle exception
             Log.i("Fragment2", e.toString());
             return;
+        }
+    }
+    @UiThread
+    void initViews() {
+        mDB = new DBUtils(activity);
+        String[] type = new String[]{"1"};
+        mCursor = mDB.select(type);
+        lv_fgm2.setAdapter(new CtListAdapter(activity, mCursor));
+    }
+
+    @UiThread
+    public void addData(String type, String operation, String operator) {
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = format.format(date);
+        mDB.insert(type, operation, operator, time);
+        mCursor.requery();
+        lv_fgm2.invalidateViews();
+
+    }
+
+    public class CtListAdapter extends BaseAdapter {
+        private Context mContext;
+        private Cursor mCursor;
+
+        public CtListAdapter(Context context, Cursor cursor) {
+
+            mContext = context;
+            mCursor = cursor;
+        }
+
+        @Override
+        public int getCount() {
+            if (mCursor.getCount() <= 5)
+                return mCursor.getCount();
+            else
+                return 5;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView mTextView = new TextView(mContext);
+            mCursor.moveToPosition(position);
+            mTextView.setText(mCursor.getString(2) + "                        " + mCursor.getString(3) + "                        " + mCursor.getString(4));
+            return mTextView;
         }
     }
 }

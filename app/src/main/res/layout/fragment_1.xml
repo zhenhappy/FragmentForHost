@@ -571,8 +571,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="操作                操作者                时间                属性1                属性2                属性3"
+                android:gravity="center_vertical"
+                android:text="     操作                        操作者                        时间     "
                 android:textSize="17.93px" />
 
             <View
