@@ -121,8 +121,8 @@ public class Fragment1 extends Fragment {
         super.onAttach(activity);
         this.activity = activity;
         sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
-//        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
-        bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[0]);
+        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
+//        bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[0]);
         initViews();
     }
 

@@ -46,44 +46,44 @@ public class Fragment4 extends Fragment {
     private Activity activity;
     private Boolean isGo = true;
     private static Map param = new HashMap() {{
-        put("duanliansicang", new HashMap(){{
-            put("value",10);
-            put("min",0);
-            put("max",240);
-            put("step",5);
+        put("duanliansicang", new HashMap() {{
+            put("value", 10);
+            put("min", 0);
+            put("max", 240);
+            put("step", 5);
         }});
-        put("jiaosudu", new HashMap(){{
-            put("value",1);
-            put("min",0);
-            put("max",10);
-            put("step",1);
+        put("jiaosudu", new HashMap() {{
+            put("value", 1);
+            put("min", 0);
+            put("max", 10);
+            put("step", 1);
         }});
-        put("qisijiaodu", new HashMap(){{
-            put("value",0);
-            put("min",0);
-            put("max",120);
-            put("step",1);
+        put("qisijiaodu", new HashMap() {{
+            put("value", 0);
+            put("min", 0);
+            put("max", 120);
+            put("step", 1);
         }});
-        put("jiesujiaodu", new HashMap(){{
-            put("value",20);
-            put("min",0);
-            put("max",120);
-            put("step",1);
+        put("jiesujiaodu", new HashMap() {{
+            put("value", 20);
+            put("min", 0);
+            put("max", 120);
+            put("step", 1);
         }});
-        put("huancongjiaodu", new HashMap(){{
-            put("value",5);
-            put("min",0);
-            put("max",120);
-            put("step",1);
+        put("huancongjiaodu", new HashMap() {{
+            put("value", 5);
+            put("min", 0);
+            put("max", 120);
+            put("step", 1);
         }});
-        put("tingliusicang", new HashMap(){{
-            put("value",5);
-            put("min",0);
-            put("max",60);
-            put("step",1);
+        put("tingliusicang", new HashMap() {{
+            put("value", 5);
+            put("min", 0);
+            put("max", 60);
+            put("step", 1);
         }});
     }};
-    private static List datas = new ArrayList<byte []>() {{
+    private static List datas = new ArrayList<byte[]>() {{
         add(new byte[]{(byte) 0xb1, (byte) 0x17, (byte) 0x08, (byte) 0x11, (byte) 0x00, (byte) 0x1b, (byte) 0x00, (byte) 0x00, (byte) 0x0d, (byte) 0x0a});//锻炼时长<=60分，没有高八位,每按下一次加减号加减5分
         add(new byte[]{(byte) 0xb1, (byte) 0x18, (byte) 0x08, (byte) 0x11, (byte) 0x00, (byte) 0x1b, (byte) 0x00, (byte) 0x00, (byte) 0x0d, (byte) 0x0a});//角速度，没有高八位，范围1-10,每按下一次加减号加减1度
         add(new byte[]{(byte) 0xb1, (byte) 0x19, (byte) 0x08, (byte) 0x11, (byte) 0x00, (byte) 0x1b, (byte) 0x00, (byte) 0x00, (byte) 0x0d, (byte) 0x0a});//起始角度<120度，没有高八位，范围0<起始角度<结束角度,每按下一次加减号加减1度
@@ -96,12 +96,12 @@ public class Fragment4 extends Fragment {
     ListView lv_fgm4;
 
     @ViewsById({R.id.edt_xiazikangfu_duanliansicang,
-                R.id.edt_xiazikangfu_jiaosudu,
-                R.id.edt_xiazikangfu_qisijiaodu,
-                R.id.edt_xiazikangfu_jiesujiaodu,
-                R.id.edt_xiazikangfu_huancongjiaodu,
-                R.id.edt_xiazikangfu_tingliusicang})
-    List<EditText> edts_xiazikangfu;
+            R.id.edt_xiazikangfu_jiaosudu,
+            R.id.edt_xiazikangfu_qisijiaodu,
+            R.id.edt_xiazikangfu_jiesujiaodu,
+            R.id.edt_xiazikangfu_huancongjiaodu,
+            R.id.edt_xiazikangfu_tingliusicang})
+    List<TextView> edts_xiazikangfu;
 
     @ViewById
     Button btn_xiazikangfu_jiqizunbei;
@@ -114,33 +114,34 @@ public class Fragment4 extends Fragment {
     @ViewById
     TextView tv_xiazikangfu_duanliancisu;
 
-    Boolean buttonFlag[] = {true,false};
+    Boolean buttonFlag[] = {true, false};
 
     BLEHelp bleHelp = null;
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
         sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
-//        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
-        bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[3]);
+        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
+//        bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[3]);
         initViews();
     }
 
     @Click({R.id.btn_xiazikangfu_jiqizunbei,
             R.id.btn_xiazikangfu_kaisiduanlian})
     void xiazikangfuButtonClicked(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_xiazikangfu_jiqizunbei:
-                if(buttonFlag[0]) {
+                if (buttonFlag[0]) {
                     bleHelp.sendDatas(DataHelp.XIAZIKANGFU_JIQIZUNBEI_STR, DataHelp.XIAZIKANGFU_JIQIZUNBEI);
                 }
                 break;
             case R.id.btn_xiazikangfu_kaisiduanlian:
-                if(buttonFlag[1]) {
-                    if (isGo){
+                if (buttonFlag[1]) {
+                    if (isGo) {
                         bleHelp.sendDatas(DataHelp.XIAZIKANGFU_DUANLIAN_START_STR, DataHelp.XIAZIKANGFU_DUANLIAN_START);
-                    }else {
+                    } else {
                         bleHelp.sendDatas(DataHelp.XIAZIKANGFU_DUANLIAN_PAUSE_STR, DataHelp.XIAZIKANGFU_DUANLIAN_PAUSE);
                     }
                 }
@@ -161,39 +162,39 @@ public class Fragment4 extends Fragment {
             R.id.btn_xiazikangfu_tingliusicang_sub,
             R.id.btn_xiazikangfu_tingliusicang_add})
     void parametersSettingsButtons(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_xiazikangfu_duanliansicang_sub:
-                parametersAddSub(0,"sub");
+                parametersAddSub(0, "sub");
                 break;
             case R.id.btn_xiazikangfu_duanliansicang_add:
                 parametersAddSub(0, "add");
                 break;
             case R.id.btn_xiazikangfu_jiaosudu_sub:
-                parametersAddSub(1,"sub");
+                parametersAddSub(1, "sub");
                 break;
             case R.id.btn_xiazikangfu_jiaosudu_add:
                 parametersAddSub(1, "add");
                 break;
             case R.id.btn_xiazikangfu_qisijiaodu_sub:
-                parametersAddSub(2,"sub");
+                parametersAddSub(2, "sub");
                 break;
             case R.id.btn_xiazikangfu_qisijiaodu_add:
                 parametersAddSub(2, "add");
                 break;
             case R.id.btn_xiazikangfu_jiesujiaodu_sub:
-                parametersAddSub(3,"sub");
+                parametersAddSub(3, "sub");
                 break;
             case R.id.btn_xiazikangfu_jiesujiaodu_add:
                 parametersAddSub(3, "add");
                 break;
             case R.id.btn_xiazikangfu_huancongjiaodu_sub:
-                parametersAddSub(4,"sub");
+                parametersAddSub(4, "sub");
                 break;
             case R.id.btn_xiazikangfu_huancongjiaodu_add:
                 parametersAddSub(4, "add");
                 break;
             case R.id.btn_xiazikangfu_tingliusicang_sub:
-                parametersAddSub(5,"sub");
+                parametersAddSub(5, "sub");
                 break;
             case R.id.btn_xiazikangfu_tingliusicang_add:
                 parametersAddSub(5, "add");
@@ -201,79 +202,95 @@ public class Fragment4 extends Fragment {
         }
     }
 
-    void parametersAddSub(int i, String type){
+    void parametersAddSub(int i, String type) {
         String[] name = new String[]{"duanliansicang", "jiaosudu", "qisijiaodu", "jiesujiaodu", "huancongjiaodu", "tingliusicang"};
         String[] title = new String[]{"锻炼时长", "角速度", "起始角度", "结束角度", "缓冲角度", "停留时长"};
         byte[] data = null;
-        if(i == 2){
-            if(type == "sub"){
-                if((int)((HashMap)param.get(name[2])).get("value") <= (int)((HashMap)param.get(name[2])).get("step")) ((HashMap)param.get(name[2])).put("value", 0);
-                else ((HashMap)param.get(name[2])).put("value", (int)((HashMap)param.get(name[2])).get("value") - (int)((HashMap)param.get(name[2])).get("step"));
-                edts_xiazikangfu.get(2).setText("" + (int)((HashMap)param.get(name[2])).get("value"));
-                data = (byte[]) datas.get(2);
-                data[3] = (byte) (int)((HashMap)param.get(name[2])).get("value");
-                sendbytes = CRCHelp.CRC16(data, 6);
-                bleHelp.sendDatas(title[2], sendbytes);
-            }else if(type == "add"){
-                if((int)((HashMap)param.get(name[2])).get("value") >= ((int)((HashMap)param.get(name[3])).get("value")-(int)((HashMap)param.get(name[2])).get("step"))) ((HashMap)param.get(name[2])).put("value", (int)((HashMap)param.get(name[3])).get("value"));
-                else ((HashMap)param.get(name[2])).put("value", (int)((HashMap)param.get(name[2])).get("value") + (int)((HashMap)param.get(name[2])).get("step"));
+        if (i == 2) {
+            if (type == "sub") {
+                if ((int) ((HashMap) param.get(name[2])).get("value") <= (int) ((HashMap) param.get(name[2])).get("step"))
+                    ((HashMap) param.get(name[2])).put("value", 0);
+                else
+                    ((HashMap) param.get(name[2])).put("value", (int) ((HashMap) param.get(name[2])).get("value") - (int) ((HashMap) param.get(name[2])).get("step"));
                 edts_xiazikangfu.get(2).setText("" + (int) ((HashMap) param.get(name[2])).get("value"));
                 data = (byte[]) datas.get(2);
-                data[3] = (byte) (int)((HashMap)param.get(name[2])).get("value");
+                data[3] = (byte) (int) ((HashMap) param.get(name[2])).get("value");
+                sendbytes = CRCHelp.CRC16(data, 6);
+                bleHelp.sendDatas(title[2], sendbytes);
+            } else if (type == "add") {
+                if ((int) ((HashMap) param.get(name[2])).get("value") >= ((int) ((HashMap) param.get(name[3])).get("value") - (int) ((HashMap) param.get(name[2])).get("step")))
+                    ((HashMap) param.get(name[2])).put("value", (int) ((HashMap) param.get(name[3])).get("value"));
+                else
+                    ((HashMap) param.get(name[2])).put("value", (int) ((HashMap) param.get(name[2])).get("value") + (int) ((HashMap) param.get(name[2])).get("step"));
+                edts_xiazikangfu.get(2).setText("" + (int) ((HashMap) param.get(name[2])).get("value"));
+                data = (byte[]) datas.get(2);
+                data[3] = (byte) (int) ((HashMap) param.get(name[2])).get("value");
                 sendbytes = CRCHelp.CRC16(data, 6);
                 bleHelp.sendDatas(title[2], sendbytes);
             }
-        }else if(i == 3){
-            if(type == "sub"){
-                if((int)((HashMap)param.get(name[3])).get("value") <= ((int)((HashMap)param.get(name[2])).get("value")+(int)((HashMap)param.get(name[3])).get("step"))) ((HashMap)param.get(name[3])).put("value", (int)((HashMap)param.get(name[2])).get("value"));
-                else ((HashMap)param.get(name[3])).put("value", (int)((HashMap)param.get(name[3])).get("value") - (int)((HashMap)param.get(name[3])).get("step"));
-                edts_xiazikangfu.get(3).setText("" + (int)((HashMap)param.get(name[3])).get("value"));
-                data = (byte[]) datas.get(3);
-                data[3] = (byte) (int)((HashMap)param.get(name[3])).get("value");
-                sendbytes = CRCHelp.CRC16(data, 6);
-                bleHelp.sendDatas(title[3], sendbytes);
-            }else if(type == "add"){
-                if((int)((HashMap)param.get(name[3])).get("value") >= ((int)((HashMap)param.get(name[3])).get("max")-(int)((HashMap)param.get(name[3])).get("step"))) ((HashMap)param.get(name[3])).put("value", (int)((HashMap)param.get(name[3])).get("max"));
-                else ((HashMap)param.get(name[3])).put("value", (int)((HashMap)param.get(name[3])).get("value") + (int)((HashMap)param.get(name[3])).get("step"));
+        } else if (i == 3) {
+            if (type == "sub") {
+                if ((int) ((HashMap) param.get(name[3])).get("value") <= ((int) ((HashMap) param.get(name[2])).get("value") + (int) ((HashMap) param.get(name[3])).get("step")))
+                    ((HashMap) param.get(name[3])).put("value", (int) ((HashMap) param.get(name[2])).get("value"));
+                else
+                    ((HashMap) param.get(name[3])).put("value", (int) ((HashMap) param.get(name[3])).get("value") - (int) ((HashMap) param.get(name[3])).get("step"));
                 edts_xiazikangfu.get(3).setText("" + (int) ((HashMap) param.get(name[3])).get("value"));
                 data = (byte[]) datas.get(3);
-                data[3] = (byte) (int)((HashMap)param.get(name[3])).get("value");
+                data[3] = (byte) (int) ((HashMap) param.get(name[3])).get("value");
+                sendbytes = CRCHelp.CRC16(data, 6);
+                bleHelp.sendDatas(title[3], sendbytes);
+            } else if (type == "add") {
+                if ((int) ((HashMap) param.get(name[3])).get("value") >= ((int) ((HashMap) param.get(name[3])).get("max") - (int) ((HashMap) param.get(name[3])).get("step")))
+                    ((HashMap) param.get(name[3])).put("value", (int) ((HashMap) param.get(name[3])).get("max"));
+                else
+                    ((HashMap) param.get(name[3])).put("value", (int) ((HashMap) param.get(name[3])).get("value") + (int) ((HashMap) param.get(name[3])).get("step"));
+                edts_xiazikangfu.get(3).setText("" + (int) ((HashMap) param.get(name[3])).get("value"));
+                data = (byte[]) datas.get(3);
+                data[3] = (byte) (int) ((HashMap) param.get(name[3])).get("value");
                 sendbytes = CRCHelp.CRC16(data, 6);
                 bleHelp.sendDatas(title[3], sendbytes);
             }
-        }else if(i == 4){
-            if(type == "sub"){
-                if((int)((HashMap)param.get(name[4])).get("value") <= (int)((HashMap)param.get(name[4])).get("step")) ((HashMap)param.get(name[4])).put("value", 0);
-                else ((HashMap)param.get(name[4])).put("value", (int)((HashMap)param.get(name[4])).get("value") - (int)((HashMap)param.get(name[4])).get("step"));
-                edts_xiazikangfu.get(4).setText("" + (int)((HashMap)param.get(name[4])).get("value"));
-                data = (byte[]) datas.get(4);
-                data[3] = (byte) (int)((HashMap)param.get(name[4])).get("value");
-                sendbytes = CRCHelp.CRC16(data, 6);
-                bleHelp.sendDatas(title[4], sendbytes);
-            }else if(type == "add"){
-                if((int)((HashMap)param.get(name[4])).get("value") >= ((int)((HashMap)param.get(name[3])).get("value")-(int)((HashMap)param.get(name[4])).get("step"))) ((HashMap)param.get(name[4])).put("value", (int)((HashMap)param.get(name[4])).get("value"));
-                else ((HashMap)param.get(name[4])).put("value", (int)((HashMap)param.get(name[4])).get("value") + (int)((HashMap)param.get(name[4])).get("step"));
+        } else if (i == 4) {
+            if (type == "sub") {
+                if ((int) ((HashMap) param.get(name[4])).get("value") <= (int) ((HashMap) param.get(name[4])).get("step"))
+                    ((HashMap) param.get(name[4])).put("value", 0);
+                else
+                    ((HashMap) param.get(name[4])).put("value", (int) ((HashMap) param.get(name[4])).get("value") - (int) ((HashMap) param.get(name[4])).get("step"));
                 edts_xiazikangfu.get(4).setText("" + (int) ((HashMap) param.get(name[4])).get("value"));
                 data = (byte[]) datas.get(4);
-                data[3] = (byte) (int)((HashMap)param.get(name[4])).get("value");
+                data[3] = (byte) (int) ((HashMap) param.get(name[4])).get("value");
+                sendbytes = CRCHelp.CRC16(data, 6);
+                bleHelp.sendDatas(title[4], sendbytes);
+            } else if (type == "add") {
+                if ((int) ((HashMap) param.get(name[4])).get("value") >= ((int) ((HashMap) param.get(name[3])).get("value") - (int) ((HashMap) param.get(name[4])).get("step")))
+                    ((HashMap) param.get(name[4])).put("value", (int) ((HashMap) param.get(name[4])).get("value"));
+                else
+                    ((HashMap) param.get(name[4])).put("value", (int) ((HashMap) param.get(name[4])).get("value") + (int) ((HashMap) param.get(name[4])).get("step"));
+                edts_xiazikangfu.get(4).setText("" + (int) ((HashMap) param.get(name[4])).get("value"));
+                data = (byte[]) datas.get(4);
+                data[3] = (byte) (int) ((HashMap) param.get(name[4])).get("value");
                 sendbytes = CRCHelp.CRC16(data, 6);
                 bleHelp.sendDatas(title[4], sendbytes);
             }
-        }else{
-            if(type == "sub"){
-                if((int)((HashMap)param.get(name[i])).get("value") <= ((int)((HashMap)param.get(name[i])).get("min")+(int)((HashMap)param.get(name[i])).get("step"))) ((HashMap)param.get(name[i])).put("value", 0);
-                else ((HashMap)param.get(name[i])).put("value", (int)((HashMap)param.get(name[i])).get("value") - (int)((HashMap)param.get(name[i])).get("step"));
-                edts_xiazikangfu.get(i).setText("" + (int)((HashMap)param.get(name[i])).get("value"));
-                data = (byte[]) datas.get(i);
-                data[3] = (byte) (int)((HashMap)param.get(name[i])).get("value");
-                sendbytes = CRCHelp.CRC16(data, 6);
-                bleHelp.sendDatas(title[i], sendbytes);
-            }else if(type == "add"){
-                if((int)((HashMap)param.get(name[i])).get("value") >= ((int)((HashMap)param.get(name[i])).get("max")-(int)((HashMap)param.get(name[i])).get("step"))) ((HashMap)param.get(name[i])).put("value", (int)((HashMap)param.get(name[0])).get("max"));
-                else ((HashMap)param.get(name[i])).put("value", (int)((HashMap)param.get(name[i])).get("value") + (int)((HashMap)param.get(name[i])).get("step"));
+        } else {
+            if (type == "sub") {
+                if ((int) ((HashMap) param.get(name[i])).get("value") <= ((int) ((HashMap) param.get(name[i])).get("min") + (int) ((HashMap) param.get(name[i])).get("step")))
+                    ((HashMap) param.get(name[i])).put("value", 0);
+                else
+                    ((HashMap) param.get(name[i])).put("value", (int) ((HashMap) param.get(name[i])).get("value") - (int) ((HashMap) param.get(name[i])).get("step"));
                 edts_xiazikangfu.get(i).setText("" + (int) ((HashMap) param.get(name[i])).get("value"));
                 data = (byte[]) datas.get(i);
-                data[3] = (byte) (int)((HashMap)param.get(name[i])).get("value");
+                data[3] = (byte) (int) ((HashMap) param.get(name[i])).get("value");
+                sendbytes = CRCHelp.CRC16(data, 6);
+                bleHelp.sendDatas(title[i], sendbytes);
+            } else if (type == "add") {
+                if ((int) ((HashMap) param.get(name[i])).get("value") >= ((int) ((HashMap) param.get(name[i])).get("max") - (int) ((HashMap) param.get(name[i])).get("step")))
+                    ((HashMap) param.get(name[i])).put("value", (int) ((HashMap) param.get(name[0])).get("max"));
+                else
+                    ((HashMap) param.get(name[i])).put("value", (int) ((HashMap) param.get(name[i])).get("value") + (int) ((HashMap) param.get(name[i])).get("step"));
+                edts_xiazikangfu.get(i).setText("" + (int) ((HashMap) param.get(name[i])).get("value"));
+                data = (byte[]) datas.get(i);
+                data[3] = (byte) (int) ((HashMap) param.get(name[i])).get("value");
                 sendbytes = CRCHelp.CRC16(data, 6);
                 bleHelp.sendDatas(title[i], sendbytes);
             }
@@ -288,20 +305,22 @@ public class Fragment4 extends Fragment {
         }
 
         @Override
-        public void onReviceCMD(BluetoothGattCharacteristic data_char) {}
+        public void onReviceCMD(BluetoothGattCharacteristic data_char) {
+        }
 
         @Override
-        public void onDisconnect() {}
+        public void onDisconnect() {
+        }
     };
 
     @Background
-    public void ReviceDatas(final BluetoothGattCharacteristic data_char){
+    public void ReviceDatas(final BluetoothGattCharacteristic data_char) {
         byte[] datas = data_char.getValue();
         UIUtils.showToastSafe(HexUtils.Bytes2HexString(datas));
-        if(datas.length == 8) {
-            if(datas[0] == (byte)0xB2 && datas[5] == (byte)0x2B){
+        if (datas.length == 8) {
+            if (datas[0] == (byte) 0xB2 && datas[5] == (byte) 0x2B) {
                 checkType(datas, data_char);
-            }else{
+            } else {
                 UIUtils.showToastSafe("数据报头或报尾校验错误 ");
                 UIUtils.showToastSafe("第0位是:" + datas[0] + "\n第5位是:" + datas[5]);
             }
@@ -309,10 +328,10 @@ public class Fragment4 extends Fragment {
     }
 
     @Background
-    public void checkType(byte[] datas, final BluetoothGattCharacteristic data_char){
+    public void checkType(byte[] datas, final BluetoothGattCharacteristic data_char) {
         String str_1 = "第2位错误";
         int btn_id = -1;
-        switch(datas[1]){
+        switch (datas[1]) {
             case (byte) 0x12:
                 str_1 = "机器";
                 btn_id = 1;
@@ -339,60 +358,72 @@ public class Fragment4 extends Fragment {
     }
 
     @Background
-    public void checkButtonStatus(byte[] datas, String str_1, int btn_id){
+    public void checkButtonStatus(byte[] datas, String str_1, int btn_id) {
         String str_2 = "第3位错误";
-        switch(datas[3]){
+        switch (datas[3]) {
             case (byte) 0x02:
-                if(btn_id == 1) {str_2 = "未准备";syncButton(datas);}
-                else {str_2 = "执行中";}
+                if (btn_id == 1) {
+                    str_2 = "未准备";
+                } else {
+                    str_2 = "执行中";
+                }
+                syncButton(datas);
                 break;
             case (byte) 0x03:
                 str_2 = "已准备";
                 syncButton(datas);
                 break;
             case (byte) 0x04:
+                syncButton(datas);
                 str_2 = "暂停";
                 break;
             case (byte) 0x08:
                 str_2 = "完成";
-                addData("4","下肢锻炼","手动");
+                syncButton(datas);
+                addData("4", "下肢锻炼", "手动");
                 break;
         }
         UIUtils.showToastSafe(str_1 + str_2);
     }
 
     @UiThread
-    public void syncButton(byte[] datas){
-        if(datas[1] == (byte)0x12 && datas[3] == (byte)0x02){
+    public void syncButton(byte[] datas) {
+        if (datas[1] == (byte) 0x12 && datas[3] == (byte) 0x02) {
             btn_xiazikangfu_jiqizunbei.setBackgroundResource(R.drawable.btn_jiqizunbei_normal);
             buttonFlag[0] = true;
             btn_xiazikangfu_kaisiduanlian.setBackgroundResource(R.drawable.btn_kaisiduanlian_disable);
             buttonFlag[1] = false;
-        }else if(datas[1] == (byte)0x12 && datas[3] == (byte)0x03){
+        } else if (datas[1] == (byte) 0x12 && datas[3] == (byte) 0x03) {
             btn_xiazikangfu_jiqizunbei.setBackgroundResource(R.drawable.btn_jiqizunbei_disable);
             buttonFlag[0] = false;
             btn_xiazikangfu_kaisiduanlian.setBackgroundResource(R.drawable.btn_kaisiduanlian_normal);
             buttonFlag[1] = true;
-        }else if(datas[1] == (byte)0x13 && datas[3] == (byte)0x02){
+        } else if (datas[1] == (byte) 0x13 && datas[3] == (byte) 0x02) {
             btn_xiazikangfu_jiqizunbei.setBackgroundResource(R.drawable.btn_jiqizunbei_disable);
             buttonFlag[0] = false;
             btn_xiazikangfu_kaisiduanlian.setBackgroundResource(R.drawable.btn_kaisiduanlian_press);
             buttonFlag[1] = true;
             isGo = false;
-        }else if(datas[1] == (byte)0x13 && datas[3] == (byte)0x04){
+        } else if (datas[1] == (byte) 0x13 && datas[3] == (byte) 0x04) {
             btn_xiazikangfu_jiqizunbei.setBackgroundResource(R.drawable.btn_jiqizunbei_disable);
             buttonFlag[0] = false;
             btn_xiazikangfu_kaisiduanlian.setBackgroundResource(R.drawable.btn_kaisiduanlian_normal);
             buttonFlag[1] = true;
             isGo = true;
+        }else if (datas[1] == (byte) 0x13 && datas[3] == (byte) 0x08) {
+            btn_xiazikangfu_jiqizunbei.setBackgroundResource(R.drawable.btn_jiqizunbei_normal);
+            buttonFlag[0] = true;
+            btn_xiazikangfu_kaisiduanlian.setBackgroundResource(R.drawable.btn_kaisiduanlian_disable);
+            buttonFlag[1] = false;
+            isGo = true;
         }
     }
 
     @UiThread
-    public void showData(byte[] datas, String str_1){
+    public void showData(byte[] datas, String str_1) {
         UIUtils.showToastSafe(str_1 + datas[3]);
         int duanliancisu = 0;
-        switch(datas[1]){
+        switch (datas[1]) {
             case (byte) 0x14:
                 tv_xiazikangfu_sisijiaodu.setText(datas[3] + "°");
                 break;
@@ -405,6 +436,7 @@ public class Fragment4 extends Fragment {
         }
         tv_xiazikangfu_duanliancisu.setText("今天               锻炼时长:" + datas[3] + "分          锻炼次数:" + duanliancisu + "                                                                  ");
     }
+
     @UiThread
     void initViews() {
         mDB = new DBUtils(activity);

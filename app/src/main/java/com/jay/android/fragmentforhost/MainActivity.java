@@ -80,9 +80,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[0]);
         sp = this.getSharedPreferences("setting", Context.MODE_PRIVATE);
-//        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
+        bleHelp = new BLEHelp(MainActivity.this, blecallback, sp.getString("mac1", null));
+//        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[0]);
         if (sp.getString("isSuoping", "false").equals("true")){
             Intent mService = new Intent(MainActivity.this, ScreenService.class);
             mService.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -101,8 +101,8 @@ public class MainActivity extends BaseActivity {
     @Click(R.id.cuangti_layout)
     void cuangtiLayoutClicked() {
         //        sp = this.getSharedPreferences("setting", Context.MODE_PRIVATE);
-//        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
-        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[0]);
+        bleHelp = new BLEHelp(MainActivity.this, blecallback, sp.getString("mac1", null));
+//        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[0]);
         currentFg = 0;
         setChioceItem(fg1);
         cuangti_image.setImageResource(R.drawable.tab_2_p);
@@ -113,8 +113,8 @@ public class MainActivity extends BaseActivity {
     @Click(R.id.daxiaobian_layout)
     void daxiaobianLayoutClicked() {
         //        sp = this.getSharedPreferences("setting", Context.MODE_PRIVATE);
-//        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac2", null));
-        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[1]);
+        bleHelp = new BLEHelp(MainActivity.this, blecallback, sp.getString("mac2", null));
+//        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[1]);
         currentFg = 1;
         setChioceItem(fg2);
         daxiaobian_image.setImageResource(R.drawable.tab_3_p);
@@ -125,8 +125,8 @@ public class MainActivity extends BaseActivity {
     @Click(R.id.sangzikangfu_layout)
     void sangzikangfuLayoutClicked() {
         //        sp = this.getSharedPreferences("setting", Context.MODE_PRIVATE);
-//        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
-        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[2]);
+        bleHelp = new BLEHelp(MainActivity.this, blecallback, sp.getString("mac1", null));
+//        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[2]);
         currentFg = 2;
         setChioceItem(fg3);
         sangzikangfu_image.setImageResource(R.drawable.tab_4_p);
@@ -135,8 +135,8 @@ public class MainActivity extends BaseActivity {
     @Click(R.id.xiazikangfu_layout)
     void xiazikangfuLayoutClicked() {
         //        sp = this.getSharedPreferences("setting", Context.MODE_PRIVATE);
-//        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
-        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[3]);
+        bleHelp = new BLEHelp(MainActivity.this, blecallback, sp.getString("mac1", null));
+//        bleHelp = new BLEHelp(MainActivity.this, blecallback, DataHelp.mac[3]);
         currentFg = 3;
         setChioceItem(fg4);
         xiazikangfu_image.setImageResource(R.drawable.tab_5_p);

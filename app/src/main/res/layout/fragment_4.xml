@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="#ffffff"
-              android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="horizontal">
 
     <!-- 左边 -->
     <LinearLayout
@@ -16,8 +16,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="57px"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="57px"
             android:orientation="horizontal">
 
             <TextView
@@ -41,9 +41,10 @@
         <LinearLayout
             android:layout_width="382px"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16px"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16px"
             android:orientation="horizontal">
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dip"
@@ -81,7 +82,7 @@
                     android:layout_marginLeft="22px"
                     android:background="@drawable/btn_sub" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_xiazikangfu_duanliansicang"
                     android:layout_width="102px"
                     android:layout_height="38px"
@@ -102,8 +103,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10px"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10px"
                     android:text="分"
                     android:textColor="#707070"
                     android:textSize="17.93px" />
@@ -133,7 +134,7 @@
                     android:layout_marginLeft="35px"
                     android:background="@drawable/btn_sub" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_xiazikangfu_jiaosudu"
                     android:layout_width="102px"
                     android:layout_height="38px"
@@ -154,8 +155,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10px"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10px"
                     android:text="度/秒"
                     android:textColor="#707070"
                     android:textSize="17.93px" />
@@ -185,7 +186,7 @@
                     android:layout_marginLeft="18px"
                     android:background="@drawable/btn_sub" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_xiazikangfu_qisijiaodu"
                     android:layout_width="102px"
                     android:layout_height="38px"
@@ -206,8 +207,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10px"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10px"
                     android:text="度"
                     android:textColor="#707070"
                     android:textSize="17.93px" />
@@ -237,7 +238,7 @@
                     android:layout_marginLeft="23px"
                     android:background="@drawable/btn_sub" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_xiazikangfu_jiesujiaodu"
                     android:layout_width="102px"
                     android:layout_height="38px"
@@ -258,8 +259,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10px"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10px"
                     android:text="度"
                     android:textColor="#707070"
                     android:textSize="17.93px" />
@@ -289,7 +290,7 @@
                     android:layout_marginLeft="24px"
                     android:background="@drawable/btn_sub" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_xiazikangfu_huancongjiaodu"
                     android:layout_width="102px"
                     android:layout_height="38px"
@@ -310,8 +311,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10px"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10px"
                     android:text="度"
                     android:textColor="#707070"
                     android:textSize="17.93px" />
@@ -341,7 +342,7 @@
                     android:layout_marginLeft="24px"
                     android:background="@drawable/btn_sub" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_xiazikangfu_tingliusicang"
                     android:layout_width="102px"
                     android:layout_height="38px"
@@ -362,8 +363,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10px"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10px"
                     android:text="秒"
                     android:textColor="#707070"
                     android:textSize="17.93px" />
@@ -424,8 +425,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="203px"
+                android:gravity="center_vertical"
                 android:text="实时角度： "
                 android:textColor="#408650"
                 android:textSize="17.93px" />
@@ -444,8 +445,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="80px"
+                android:gravity="center_vertical"
                 android:text="锻炼时长："
                 android:textColor="#408650"
                 android:textSize="17.93px" />
@@ -465,9 +466,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:layout_marginTop="30px"
             android:layout_marginLeft="44.3px"
+            android:layout_marginTop="30px"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -483,9 +484,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="13px"
             android:layout_marginLeft="44px"
             android:layout_marginRight="41px"
+            android:layout_marginTop="13px"
             android:orientation="horizontal">
 
             <View
@@ -511,10 +512,10 @@
                 android:id="@+id/tv_xiazikangfu_duanliancisu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="17.93px"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="今天               锻炼时长:2          锻炼次数:42                                                                  " />
+                android:text="今天               锻炼时长:2          锻炼次数:42                                                                  "
+                android:textSize="17.93px" />
 
             <View
                 android:layout_width="2dip"
@@ -538,9 +539,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="13px"
             android:layout_marginLeft="44px"
             android:layout_marginRight="41px"
+            android:layout_marginTop="13px"
             android:orientation="horizontal">
 
             <View
@@ -565,10 +566,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="17.93px"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="操作                操作者             时间                自动/手动        开始角度          结束角度" />
+                android:gravity="center_vertical"
+                android:text="     操作                        操作者                        时间     "
+                android:textSize="17.93px" />
 
             <View
                 android:layout_width="2dip"
@@ -588,6 +589,7 @@
                 android:layout_height="1dip"
                 android:background="#d2d2d2" />
         </LinearLayout>
+
         <ListView
             android:id="@+id/lv_fgm4"
             android:layout_width="match_parent"

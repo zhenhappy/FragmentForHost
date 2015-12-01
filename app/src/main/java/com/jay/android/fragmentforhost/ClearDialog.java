@@ -33,38 +33,38 @@ public class ClearDialog {
         return dialog;
     }
 
-    // ÇåÀí»º´æ
+    // ï¿½ï¿½ï¿½?ï¿½ï¿½
 
-    // Çå³ý±¾Ó¦ÓÃÄÚ²¿»º´æ(/data/data/com.xxx.xxx/cache) * * @param context
+    // ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½(/data/data/com.xxx.xxx/cache) * * @param context
 
     public static void cleanInternalCache(Context context) {
         deleteFilesByDirectory(context.getCacheDir());
     }
 
-    //Çå³ý±¾Ó¦ÓÃËùÓÐÊý¾Ý¿â(/data/data/com.xxx.xxx/databases) * * @param context
+    //ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½(/data/data/com.xxx.xxx/databases) * * @param context
 
     public static void cleanDatabases(Context context) {
         deleteFilesByDirectory(new File("/data/data/"
                 + context.getPackageName() + "/databases"));
     }
 
-    // Çå³ý±¾Ó¦ÓÃSharedPreference(/data/data/com.xxx.xxx/shared_prefs)
+    // ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½SharedPreference(/data/data/com.xxx.xxx/shared_prefs)
     public static void cleanSharedPreference(Context context) {
         deleteFilesByDirectory(new File("/data/data/"
                 + context.getPackageName() + "/shared_prefs"));
     }
 
-    // °´Ãû×ÖÇå³ý±¾Ó¦ÓÃÊý¾Ý¿â
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
     public static void cleanDatabaseByName(Context context, String dbName) {
         context.deleteDatabase(dbName);
     }
 
-    //Çå³ý/data/data/com.xxx.xxx/filesÏÂµÄÄÚÈÝ
+    //ï¿½ï¿½ï¿½/data/data/com.xxx.xxx/filesï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½
     public static void cleanFiles(Context context) {
         deleteFilesByDirectory(context.getFilesDir());
     }
 
-    //Çå³ýÍâ²¿cacheÏÂµÄÄÚÈÝ(/mnt/sdcard/android/data/com.xxx.xxx/cache)
+    //ï¿½ï¿½ï¿½ï¿½â²¿cacheï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½(/mnt/sdcard/android/data/com.xxx.xxx/cache)
     public static void cleanExternalCache(Context context) {
         if (Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
@@ -72,12 +72,12 @@ public class ClearDialog {
         }
     }
 
-    //Çå³ý×Ô¶¨ÒåÂ·¾¶ÏÂµÄÎÄ¼þ£¬Ê¹ÓÃÐèÐ¡ÐÄ£¬Çë²»ÒªÎóÉ¾¡£¶øÇÒÖ»Ö§³ÖÄ¿Â¼ÏÂµÄÎÄ¼þÉ¾³ý
+    //ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½Âµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ä£ï¿½ï¿½ë²»Òªï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»Ö§ï¿½ï¿½Ä¿Â¼ï¿½Âµï¿½ï¿½Ä¼ï¿½É¾ï¿½ï¿½
     public static void cleanCustomCache(String filePath) {
         deleteFilesByDirectory(new File(filePath));
     }
 
-    //Çå³ý±¾Ó¦ÓÃËùÓÐµÄÊý¾Ý
+    //ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½
     public static void cleanApplicationData(Context context) {
         cleanInternalCache(context);
         cleanExternalCache(context);
@@ -90,7 +90,7 @@ public class ClearDialog {
 
     }
 
-    // É¾³ý·½·¨ ÕâÀïÖ»»áÉ¾³ýÄ³¸öÎÄ¼þ¼ÐÏÂµÄÎÄ¼þ£¬Èç¹û´«ÈëµÄdirectoryÊÇ¸öÎÄ¼þ£¬½«²»×ö´¦Àí
+    // É¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½É¾ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½directoryï¿½Ç¸ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private static void deleteFilesByDirectory(File directory) {
         if (directory != null && directory.exists() && directory.isDirectory()) {
             for (File item : directory.listFiles()) {

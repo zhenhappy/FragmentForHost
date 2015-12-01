@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="5dp"
-                    android:text="锁屏密码"
+                    android:text="是否锁屏"
                     android:textSize="18sp" />
 
                 <CheckBox

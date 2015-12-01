@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -59,6 +60,12 @@ public class Fragment5 extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         iniViews();
 
     }
@@ -81,11 +88,12 @@ public class Fragment5 extends Fragment {
                 if (isChecked) {
                     getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE).edit()
                             .putString("isSuoping", "true").commit();
-                    UIUtils.showToastSafe("11 ");
+                    Intent mService = new Intent(getActivity(), ScreenService.class);
+                    mService.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    activity.startService(mService);
                 }else {
                     getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE).edit()
                             .putString("isSuoping", "false").commit();
-                    UIUtils.showToastSafe("222");
                 }
             }
         });
