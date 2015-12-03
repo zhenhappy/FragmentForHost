@@ -91,11 +91,11 @@ public class Fragment2 extends Fragment {
     Button btn_daxiaobian_xiaodusajun;
 
     @ViewsById({R.id.btn_daxiaobian_dabianculi,
-                R.id.btn_daxiaobian_xiaobianculi,
-                R.id.btn_daxiaobian_qingxitunbu,
-                R.id.btn_daxiaobian_honggantunbu,
-                R.id.btn_daxiaobian_congxibiandian,
-                R.id.btn_daxiaobian_xiaodusajun})
+            R.id.btn_daxiaobian_xiaobianculi,
+            R.id.btn_daxiaobian_qingxitunbu,
+            R.id.btn_daxiaobian_honggantunbu,
+            R.id.btn_daxiaobian_congxibiandian,
+            R.id.btn_daxiaobian_xiaodusajun})
     List<Button> btns_daxiaobian;
 
     @ViewById
@@ -152,12 +152,19 @@ public class Fragment2 extends Fragment {
         super.onAttach(activity);
         this.activity = activity;
         sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
-        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac2", null));
-//        bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[1]);
-        initViews();
     }
 
     BLEHelp bleHelp = null;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac2", null));
+//        bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[1]);
+        initViews();
+
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -172,15 +179,16 @@ public class Fragment2 extends Fragment {
         put("wusuitongsuiding", false);
         put("paisuikaiguan", false);
     }};
+
     private void initSettings() {
         checkButton("niaosijinmosi", btn_daxiaobian_niaosijinmosi);
         checkButton("nvxingmosi", btn_daxiaobian_nvxingmosi);
         checkButton("wusuitongsuiding", btn_daxiaobian_wusuitongsuiding);
         checkButton("paisuikaiguan", btn_daxiaobian_paisuikaiguan);
-        if((Boolean)mosi.get("paisuikaiguan")){
+        if ((Boolean) mosi.get("paisuikaiguan")) {
             btn_daxiaobian_paisui.setBackgroundResource(R.drawable.btn_daxiaobian_paisui);
             flagPaisui = true;
-        }else{
+        } else {
             btn_daxiaobian_paisui.setBackgroundResource(R.drawable.btn_daxiaobian_paisui_disable);
             flagPaisui = false;
         }
@@ -189,7 +197,7 @@ public class Fragment2 extends Fragment {
     private void checkButton(String key, Button btn) {
         mosi.put(key, (Boolean) SharedPreferencesUtils.getParam(getActivity().getApplicationContext(), key, false));
         if (mosi.get(key) != null) {
-            if ((Boolean)mosi.get(key)) btn.setBackgroundResource(R.drawable.btn_on);
+            if ((Boolean) mosi.get(key)) btn.setBackgroundResource(R.drawable.btn_on);
             else btn.setBackgroundResource(R.drawable.btn_off);
         } else {
             SharedPreferencesUtils.setParam(getActivity().getApplicationContext(), key, false);
@@ -242,19 +250,19 @@ public class Fragment2 extends Fragment {
 
     @Click(R.id.btn_daxiaobian_dabianculi)
     void dabianculiButtonClicked() {
-        if(flag){
+        if (flag) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_DABIANMOSI_STR, DataHelp.DAXIAOBIAN_DABIANMOSI);
         }
     }
 
     @Click(R.id.btn_daxiaobian_xiaobianculi)
     void xiaobianculiButtonClicked() {
-        if(flag){
-            if((Boolean)mosi.get("niaosijinmosi")){
+        if (flag) {
+            if ((Boolean) mosi.get("niaosijinmosi")) {
                 bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NIAOSIJINMOSI_STR, DataHelp.DAXIAOBIAN_NIAOSIJINMOSI);
-            }else if((Boolean)mosi.get("nvxingmosi")){
+            } else if ((Boolean) mosi.get("nvxingmosi")) {
                 bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NVXINGXIAOBIANMOSI_STR, DataHelp.DAXIAOBIAN_NVXINGXIAOBIANMOSI);
-            }else{
+            } else {
                 bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NANXINGXIAOBIANMOSI_STR, DataHelp.DAXIAOBIAN_NANXINGXIAOBIANMOSI);
             }
         }
@@ -262,35 +270,35 @@ public class Fragment2 extends Fragment {
 
     @Click(R.id.btn_daxiaobian_qingxitunbu)
     void qingxitunbuButtonClicked() {
-        if(flag){
+        if (flag) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_CONGXITUNBU_STR, DataHelp.DAXIAOBIAN_CONGXITUNBU);
         }
     }
 
     @Click(R.id.btn_daxiaobian_honggantunbu)
     void honggantunbuButtonClicked() {
-        if(flag){
+        if (flag) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_TONGFENGGANZAO_STR, DataHelp.DAXIAOBIAN_TONGFENGGANZAO);
         }
     }
 
     @Click(R.id.btn_daxiaobian_congxibiandian)
     void congxibiandianButtonClicked() {
-        if(flag){
+        if (flag) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_CONGXIBIANDIAN_STR, DataHelp.DAXIAOBIAN_CONGXIBIANDIAN);
         }
     }
 
     @Click(R.id.btn_daxiaobian_xiaodusajun)
     void xiaodusajunButtonClicked() {
-        if(flag){
+        if (flag) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_QINGJIESAJUNMOSI_STR, DataHelp.DAXIAOBIAN_QINGJIESAJUNMOSI);
         }
     }
 
     @Click(R.id.btn_daxiaobian_paisui)
     void huanqicucouButtonClicked() {
-        if(flagPaisui){
+        if (flagPaisui) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_PAISUIMOSI_STR, DataHelp.DAXIAOBIAN_PAISUIMOSI);
         }
     }
@@ -302,9 +310,9 @@ public class Fragment2 extends Fragment {
 
     @Click(R.id.btn_daxiaobian_zidonghuanqicucou)
     void zidonghuanqicucouButtonClicked() {
-        if((Boolean)mosi.get("huanqicucou_auto")){
+        if ((Boolean) mosi.get("huanqicucou_auto")) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_ZIDONGHUANQIMOSI_OFF_STR, DataHelp.DAXIAOBIAN_ZIDONGHUANQIMOSI_OFF);
-        }else{
+        } else {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_ZIDONGHUANQIMOSI_ON_STR, DataHelp.DAXIAOBIAN_ZIDONGHUANQIMOSI_ON);
         }
         setButton("huanqicucou_auto", btn_daxiaobian_zidonghuanqicucou);
@@ -312,13 +320,13 @@ public class Fragment2 extends Fragment {
 
     @Click(R.id.btn_daxiaobian_niaosijinmosi)
     void niaosijinmosiButtonClicked() {
-        if((Boolean)mosi.get("niaosijinmosi")){
-            if((Boolean)mosi.get("nvxingmosi")){
+        if ((Boolean) mosi.get("niaosijinmosi")) {
+            if ((Boolean) mosi.get("nvxingmosi")) {
                 bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NVXING_SETTINGS_STR, DataHelp.DAXIAOBIAN_NVXING_SETTINGS);
-            }else{
+            } else {
                 bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NANXING_SETTINGS_STR, DataHelp.DAXIAOBIAN_NANXING_SETTINGS);
             }
-        }else{
+        } else {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NIAOSIJIN_SETTINGS_STR, DataHelp.DAXIAOBIAN_NIAOSIJIN_SETTINGS);
         }
         setButton("niaosijinmosi", btn_daxiaobian_niaosijinmosi);
@@ -326,12 +334,12 @@ public class Fragment2 extends Fragment {
 
     @Click(R.id.btn_daxiaobian_nvxingmosi)
     void nvxingmosiButtonClicked() {
-        if((Boolean)mosi.get("niaosijinmosi")){
+        if ((Boolean) mosi.get("niaosijinmosi")) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NIAOSIJIN_SETTINGS_STR, DataHelp.DAXIAOBIAN_NIAOSIJIN_SETTINGS);
-        }else{
-            if((Boolean)mosi.get("nvxingmosi")){
+        } else {
+            if ((Boolean) mosi.get("nvxingmosi")) {
                 bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NANXING_SETTINGS_STR, DataHelp.DAXIAOBIAN_NANXING_SETTINGS);
-            }else{
+            } else {
                 bleHelp.sendDatas(DataHelp.DAXIAOBIAN_NVXING_SETTINGS_STR, DataHelp.DAXIAOBIAN_NVXING_SETTINGS);
             }
         }
@@ -340,15 +348,15 @@ public class Fragment2 extends Fragment {
 
     @Click(R.id.btn_daxiaobian_wusuitongsuiding)
     void wusuitongsuidingButtonClicked() {
-        if((Boolean)mosi.get("wusuitongsuiding")){
+        if ((Boolean) mosi.get("wusuitongsuiding")) {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_RUTONG_STR, DataHelp.DAXIAOBIAN_RUTONG);
             setButton("wusuitongsuiding", btn_daxiaobian_wusuitongsuiding);
-            flag=false;
+            flag = false;
             syncButton(-1);
-        }else{
+        } else {
             bleHelp.sendDatas(DataHelp.DAXIAOBIAN_CUTONG_STR, DataHelp.DAXIAOBIAN_CUTONG);
             setButton("wusuitongsuiding", btn_daxiaobian_wusuitongsuiding);
-            flag=true;
+            flag = true;
             syncButton(0);
         }
     }
@@ -356,35 +364,35 @@ public class Fragment2 extends Fragment {
     @Click(R.id.btn_daxiaobian_paisuikaiguan)
     void paisuikaiguanButtonClicked() {
         setButton("paisuikaiguan", btn_daxiaobian_paisuikaiguan);
-        if((Boolean)mosi.get("paisuikaiguan")){
+        if ((Boolean) mosi.get("paisuikaiguan")) {
             btn_daxiaobian_paisui.setBackgroundResource(R.drawable.btn_daxiaobian_paisui);
             flagPaisui = true;
-        }else{
+        } else {
             btn_daxiaobian_paisui.setBackgroundResource(R.drawable.btn_daxiaobian_paisui_disable);
             flagPaisui = false;
         }
     }
 
     private void setButton(String key, Button btn) {
-        if ((Boolean)mosi.get(key)) btn.setBackgroundResource(R.drawable.btn_off);
+        if ((Boolean) mosi.get(key)) btn.setBackgroundResource(R.drawable.btn_off);
         else btn.setBackgroundResource(R.drawable.btn_on);
         mosi.put(key, !(Boolean) mosi.get(key));
         SharedPreferencesUtils.setParam(getActivity().getApplicationContext(), key, mosi.get(key));
     }
 
     @UiThread
-    public void syncButton(int btn_id){
-        String[] name = new String[] { "dabianculi", "xiaobianculi", "qingxitunbu", "honggantunbu", "congxibiandian", "xiaodusajun" };
+    public void syncButton(int btn_id) {
+        String[] name = new String[]{"dabianculi", "xiaobianculi", "qingxitunbu", "honggantunbu", "congxibiandian", "xiaodusajun"};
         try {
-            if(!flag) {
+            if (!flag) {
                 for (int i = 0; i < 6; i++) {
-                    if(i != btn_id) {
+                    if (i != btn_id) {
                         btns_daxiaobian.get(i).setBackgroundResource((int) R.drawable.class.getDeclaredField("btn_daxiaobian_" + name[i] + "_disable").get(R.drawable.class));
-                    }else{
+                    } else {
                         btns_daxiaobian.get(btn_id).setBackgroundResource(R.drawable.btn_ing);
                     }
                 }
-            }else{
+            } else {
                 for (int i = 0; i < 6; i++) {
                     btns_daxiaobian.get(i).setBackgroundResource((int) R.drawable.class.getDeclaredField("btn_daxiaobian_" + name[i]).get(R.drawable.class));
                 }
@@ -404,29 +412,31 @@ public class Fragment2 extends Fragment {
         }
 
         @Override
-        public void onReviceCMD(BluetoothGattCharacteristic data_char) {}
+        public void onReviceCMD(BluetoothGattCharacteristic data_char) {
+        }
 
         @Override
-        public void onDisconnect() {}
+        public void onDisconnect() {
+        }
     };
 
     @Background
-    public void ReviceDatas(final BluetoothGattCharacteristic data_char){
+    public void ReviceDatas(final BluetoothGattCharacteristic data_char) {
         byte[] datas = data_char.getValue();
-        if(datas.length == 7) {
-            if(datas[0] == (byte)0xB2 && datas[1] == (byte)0x4E){
+        if (datas.length == 7) {
+            if (datas[0] == (byte) 0xB2 && datas[1] == (byte) 0x4E) {
                 checkType(datas, data_char);
-            }else{
+            } else {
                 UIUtils.showToastSafe("数据头部校验错误 ");
                 UIUtils.showToastSafe("第0位是:" + datas[0] + "\n第1位是:" + datas[1]);
             }
         }
     }
 
-    public void checkType(byte[] datas, final BluetoothGattCharacteristic data_char){
+    public void checkType(byte[] datas, final BluetoothGattCharacteristic data_char) {
         String str_1 = "第2位错误";
         int btn_id = -1;
-        switch(datas[2]){
+        switch (datas[2]) {
             case 1:
                 str_1 = "冲洗臀部";
                 btn_id = 2;
@@ -500,9 +510,9 @@ public class Fragment2 extends Fragment {
     }
 
     @Background
-    public void checkButtonStatus(byte[] datas, String str_1, int btn_id){
+    public void checkButtonStatus(byte[] datas, String str_1, int btn_id) {
         String str_2 = "第4位错误";
-        switch(datas[4]){
+        switch (datas[4]) {
             case 0:
                 str_2 = "未完成退出";
                 flag = true;
@@ -511,10 +521,10 @@ public class Fragment2 extends Fragment {
                 str_2 = "执行中";
                 flag = false;
                 break;
-            case (byte)0xff:
+            case (byte) 0xff:
                 str_2 = "执行完成";
                 flag = true;
-                addData("2",str_1,"手动");
+                addData("2", str_1, "手动");
                 break;
         }
         syncButton(btn_id);
@@ -522,35 +532,51 @@ public class Fragment2 extends Fragment {
     }
 
     @Background
-    public void checkStatus(final BluetoothGattCharacteristic data_char){
-        String[] status = new String[] { "水温过高", "管道堵塞", "便垫未连接", "电机温度过高", "污水桶满", "缺消毒水", "水位低于50%", "水位低于25%" };
+    public void checkStatus(final BluetoothGattCharacteristic data_char) {
+        String[] status = new String[]{"水温过高", "管道堵塞", "便垫未连接", "电机温度过高", "污水桶满", "缺消毒水", "水位低于50%", "水位低于25%"};
         Integer data = data_char.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT8, 4);
-        for(int i = 0; i < 8; i ++) {
-            if((data & (0x80 >> i)) == (0x80 >> i)){
+        for (int i = 0; i < 8; i++) {
+            if ((data & (0x80 >> i)) == (0x80 >> i)) {
                 setStatus(i);
             }
         }
         BackgroundExecutor.cancelAll("clearStatus_task", true);
-        flag=false;
+        flag = false;
         syncButton(-1);
         clearStatus_task();
     }
 
     @UiThread
     public void setStatus(int status) {
-        String[] name = new String[] { "suiwen", "guandao", "biandian", "dianjiwendu", "wusuitong", "yaosuitong", "qingsuitong", "qingsuitong" };
+        String[] name = new String[]{"suiwen", "guandao", "biandian", "dianjiwendu", "wusuitong", "yaosuitong", "qingsuitong", "qingsuitong"};
         try {
-            BackgroundExecutor.cancelAll("Status_task_"+status, true);
+            BackgroundExecutor.cancelAll("Status_task_" + status, true);
             imgs_daxiaobian.get(status).setImageResource((int) R.drawable.class.getDeclaredField("img_daxiaobian_" + name[status] + "_danger").get(R.drawable.class));
-            switch(status){
-                case 0: Status_task_0();break;
-                case 1: Status_task_1();break;
-                case 2: Status_task_2();break;
-                case 3: Status_task_3();break;
-                case 4: Status_task_4();break;
-                case 5: Status_task_5();break;
-                case 6: Status_task_6();break;
-                case 7: Status_task_7();break;
+            switch (status) {
+                case 0:
+                    Status_task_0();
+                    break;
+                case 1:
+                    Status_task_1();
+                    break;
+                case 2:
+                    Status_task_2();
+                    break;
+                case 3:
+                    Status_task_3();
+                    break;
+                case 4:
+                    Status_task_4();
+                    break;
+                case 5:
+                    Status_task_5();
+                    break;
+                case 6:
+                    Status_task_6();
+                    break;
+                case 7:
+                    Status_task_7();
+                    break;
             }
         } catch (Exception e) {
             // TODO: handle exception
@@ -559,47 +585,55 @@ public class Fragment2 extends Fragment {
         }
     }
 
-    @Background(id="Status_task_0", delay=2100)
+    @Background(id = "Status_task_0", delay = 2100)
     public void Status_task_0() {
         resetStatus(0);
     }
-    @Background(id="Status_task_1", delay=2100)
+
+    @Background(id = "Status_task_1", delay = 2100)
     public void Status_task_1() {
         resetStatus(1);
     }
-    @Background(id="Status_task_2", delay=2100)
+
+    @Background(id = "Status_task_2", delay = 2100)
     public void Status_task_2() {
         resetStatus(2);
     }
-    @Background(id="Status_task_3", delay=2100)
+
+    @Background(id = "Status_task_3", delay = 2100)
     public void Status_task_3() {
         resetStatus(3);
     }
-    @Background(id="Status_task_4", delay=2100)
+
+    @Background(id = "Status_task_4", delay = 2100)
     public void Status_task_4() {
         resetStatus(4);
     }
-    @Background(id="Status_task_5", delay=2100)
+
+    @Background(id = "Status_task_5", delay = 2100)
     public void Status_task_5() {
         resetStatus(5);
     }
-    @Background(id="Status_task_6", delay=2100)
+
+    @Background(id = "Status_task_6", delay = 2100)
     public void Status_task_6() {
         resetStatus(6);
     }
-    @Background(id="Status_task_0", delay=2100)
+
+    @Background(id = "Status_task_0", delay = 2100)
     public void Status_task_7() {
         resetStatus(7);
     }
-    @Background(id="clearStatus_task", delay=2300)
+
+    @Background(id = "clearStatus_task", delay = 2300)
     public void clearStatus_task() {
-        flag=true;
+        flag = true;
         syncButton(-1);
     }
 
     @UiThread
-    public void resetStatus(int status){
-        String[] name = new String[] { "suiwen", "guandao", "biandian", "dianjiwendu", "wusuitong", "yaosuitong", "qingsuitong", "qingsuitong" };
+    public void resetStatus(int status) {
+        String[] name = new String[]{"suiwen", "guandao", "biandian", "dianjiwendu", "wusuitong", "yaosuitong", "qingsuitong", "qingsuitong"};
         try {
             imgs_daxiaobian.get(status).setImageResource((int) R.drawable.class.getDeclaredField("img_daxiaobian_" + name[status] + "_normal").get(R.drawable.class));
         } catch (Exception e) {
@@ -608,6 +642,7 @@ public class Fragment2 extends Fragment {
             return;
         }
     }
+
     @UiThread
     void initViews() {
         mDB = new DBUtils(activity);

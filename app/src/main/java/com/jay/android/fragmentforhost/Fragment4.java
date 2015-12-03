@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -123,6 +122,11 @@ public class Fragment4 extends Fragment {
         super.onAttach(activity);
         this.activity = activity;
         sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         bleHelp = new BLEHelp(activity, blecallback, sp.getString("mac1", null));
 //        bleHelp = new BLEHelp(activity, blecallback, DataHelp.mac[3]);
         initViews();

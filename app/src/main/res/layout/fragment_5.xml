@@ -86,12 +86,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dip"
-                android:background="#F4F4F4" />
+                android:background="#F4F4F4"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="6dp"
+                android:visibility="gone"
                 android:paddingTop="6dp">
 
                 <TextView

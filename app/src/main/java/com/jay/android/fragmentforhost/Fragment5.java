@@ -5,15 +5,13 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.content.SharedPreferences;
 import android.widget.TextView;
-
-import com.jay.android.fragmentforhost.Utils.UIUtils;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
@@ -66,12 +64,12 @@ public class Fragment5 extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        iniViews();
+        initViews();
 
     }
 
     @UiThread
-    public void iniViews() {
+    public void initViews() {
         sp = getActivity().getSharedPreferences("setting", Context.MODE_PRIVATE);
         tv_name.setText(sp.getString("name", null));
         tv_age.setText(sp.getString("age", null));
